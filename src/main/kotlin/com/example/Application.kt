@@ -8,13 +8,9 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @EnableReactiveMongoRepositories
 class Application
 
-interface Entity {
-    val id: String?
-}
-
 data class User(
-    override val id: String? = null,
+    val id: String? = null,
     val flags: Map<String, Any>, // change this to <String, String> and test will start passing
-) : Entity
+)
 
 interface UserRepository : ReactiveMongoRepository<User, String>
